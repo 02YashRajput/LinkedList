@@ -61,10 +61,11 @@ class LinkedList:
                 currentNode.next = None
 
     def deleteAtIndex(self,index):
-        if self.head is None:
+        if self.head is None or index < 0:
             return
         elif index == 0:
             self.head = self.head.next
+        
         else:
             currentNode = self.head
             while(index !=1 and currentNode!=None):
@@ -98,6 +99,19 @@ class LinkedList:
                 currentNode = currentNode.next
         else:
             print("Linked List is empty")
+    
+    def reverse(self):
+        if self.head is None:
+            print("Linked List is empty")
+            return
+        prev = None
+        current = self.head
+        while current:
+            next_node = current.next
+            current.next = prev
+            prev = current
+            current = next_node
+        self.head = prev
 
     def size(self):
         size = 0
