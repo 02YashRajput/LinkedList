@@ -53,9 +53,12 @@ class LinkedList:
             return
         else:
             currentNode = self.head
-            while(currentNode.next.next):
-                currentNode = currentNode.next
-            currentNode.next = None
+            if currentNode.next is None:
+                self.head = None
+            else:
+                while(currentNode.next.next):
+                    currentNode = currentNode.next
+                currentNode.next = None
 
     def deleteAtIndex(self,index):
         if self.head is None:
