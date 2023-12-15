@@ -32,7 +32,7 @@ class DoublyLinkedList:
         newNode = Node(data)
         if index == 0:
             self.insertAtBegin(data)
-        elif self.head is None or index<0:
+        elif index<0:
             return  
         else:
             currentNode = self.head
@@ -55,7 +55,7 @@ class DoublyLinkedList:
     def deleteAtBegin(self):
         if(self.head):
             self.head.next.prev = None
-            self.head.next = self.head
+            self.head = self.head.next
         else:
             print("Empty Linked list")
 
@@ -66,7 +66,8 @@ class DoublyLinkedList:
             while(currentNode.next.next):
                 currentNode = currentNode.next
             currentNode.next = None
-
+        else:
+            print("Empty Linked list")
 
     def deleteAtIndex(self,index):
         if self.head is None:
@@ -83,7 +84,7 @@ class DoublyLinkedList:
             if(currentNode!=None and currentNode.next.next!=None):
                 currentNode.next.next.prev = currentNode
                 currentNode.next = currentNode.next.next
-            elif(currentNode.next.next!=None):
+            elif(currentNode!=None and currentNode.next.next==None):
                 currentNode.next = None
             else:
                 print("index not found")
@@ -95,6 +96,9 @@ class DoublyLinkedList:
             while(currentNode):
                 print(currentNode.data)
                 currentNode = currentNode.next
+        else:
+            print("Empty Linked list")
+
 
 L1 = DoublyLinkedList()
 L1.insertAtEnd(1)
@@ -102,6 +106,7 @@ L1.insertAtEnd(2)
 L1.insertAtBegin(0)
 L1.display()
 L1.insertAtIndex(3,3)
+print()
 L1.display()
 
 

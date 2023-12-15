@@ -37,10 +37,10 @@ class CircularLinkedList:
              
 
     def insertAtIndex(self,data,index):
-        if self.head is None:
-            print("Empty LinkedList")
-        elif(index == 0):
+        if(index == 0):
             self.insertAtBegin(data)
+        elif index<0:
+            print("Enter valid index")
         else:
             currentNode = self.head
             newNode = Node(data)
@@ -54,5 +54,59 @@ class CircularLinkedList:
                 print("index not found")
 
 
+    def delete_at_beginning(self):
+        if not self.head:
+            print("Empty Circular Linked List")
+            return
 
-            
+        if self.head.next == self.head:
+            self.head = None
+        else:
+            temp = self.head
+            while temp.next != self.head:
+                temp = temp.next
+            temp.next = self.head.next
+            self.head = self.head.next
+
+    def delete_at_end(self):
+        if not self.head:
+            print("Empty Circular Linked List")
+            return
+
+        if self.head.next == self.head:
+            self.head = None
+        else:
+            temp = self.head
+            while temp.next.next != self.head:
+                temp = temp.next
+            temp.next = self.head
+
+    def delete_at_index(self, index):
+        if not self.head:
+            print("Empty Circular Linked List")
+            return
+
+        if index == 0:
+            self.delete_at_beginning()
+        else:
+            currentNode = self.head
+            while(index !=1 and currentNode!=None):
+                currentNode = currentNode.next
+                index -=1
+            if currentNode!=None:
+                currentNode.next = currentNode.next.next
+            else:
+                print("index not found")
+
+    def display(self):
+        if self.head:
+            currentNode = self.head.next
+            print(self.head.data)
+            while(currentNode!=self.head):
+                print(currentNode.data)
+                currentNode = currentNode.next
+        else:
+            print("list is empty")
+
+
+        

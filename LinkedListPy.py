@@ -30,7 +30,7 @@ class LinkedList:
          
         if index ==0:
            self.insertAtBegin(data)
-        elif self.head is None or index <0:
+        elif index <0:
             return
         else:
             currentNode = self.head
@@ -62,10 +62,10 @@ class LinkedList:
                 currentNode.next = None
 
     def deleteAtIndex(self,index):
-        if self.head is None or index < 0:
-            return
-        elif index == 0:
+        if index == 0:
             self.head = self.head.next
+        elif index < 0:
+            return
         
         else:
             currentNode = self.head
@@ -144,6 +144,4 @@ L1.size()
 L2 = LinkedList()
 L2.display()
 L2.size()
-
-
 
